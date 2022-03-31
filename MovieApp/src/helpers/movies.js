@@ -1,0 +1,76 @@
+export const MOVIES = [
+    {
+        "title": "The Shawshank Redemption",
+        "rank": "1",
+        "id": "tt0111161",
+        "portada": require("../../assets/images/tt0111161.jpg"),
+    },
+    {
+        "title": "The Godfather",
+        "rank": "2",
+        "id": "tt0068646",
+        "portada": require("../../assets/images/tt0068646.jpg"),
+    },
+    {
+        "title": "The Godfather: Part II",
+        "rank": "3",
+        "id": "tt0071562",
+        "trailer": "",
+        "portada": require("../../assets/images/tt0071562.jpg"),
+    },
+    {
+        "title": "Pulp Fiction",
+        "rank": "4",
+        "id": "tt0110912",
+        "trailer": "",
+        "portada": require("../../assets/images/tt0110912.jpg"),
+    },
+    {
+        "title": "The Good, the Bad and the Ugly",
+        "rank": "5",
+        "id": "tt0060196",
+        "portada": require("../../assets/images/tt0060196.jpg"),
+    },
+    {
+        "title": "The Dark Knight",
+        "rank": "6",
+        "id": "tt0468569",
+        "portada": require("../../assets/images/tt0468569.jpg"),
+    },
+    {
+        "title": "12 Angry Men",
+        "rank": "7",
+        "id": "tt0050083",
+        "portada": require("../../assets/images/tt0050083.jpg"),
+    },
+    {
+        "title": "Schindler's List",
+        "rank": "8",
+        "id": "tt0108052",
+        "portada": require("../../assets/images/tt0108052.jpg"),
+    },
+    {
+        "title": "The Lord of the Rings: The Return of the King",
+        "rank": "9",
+        "id": "tt0167260",
+        "portada": require("../../assets/images/tt0167260.jpg"),
+    },
+    {
+        "title": "Fight Club",
+        "rank": "10",
+        "id": "tt0137523",
+        "portada": require("../../assets/images/tt0137523.jpg"),
+    },
+    {
+        "title": "Star Wars: Episode V - The Empire Strikes Back",
+        "rank": "11",
+        "id": "tt0080684",
+        "portada": require("../../assets/images/tt0080684.jpg"),
+    },
+    {
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "rank": "12",
+        "id": "tt0120737",
+        "portada": require("../../assets/images/tt0120737.jpg"),
+    },
+  ];

@@ -23,9 +23,11 @@ export default function LoginScreen() {
 
   const mutation = useMutation(loginPost, {
     onSuccess: () => {
+      setLoading(false);
       navigation.navigate('Navigation');
     },
     onError: () => {
+      setLoading(false);
       AsyncStorage.removeItem('auth');
     },
   });
@@ -44,6 +46,9 @@ export default function LoginScreen() {
       password: '',
     },
     onSubmit: values => {
+      setLoading(true);
+
+
       storeData('auth', JSON.stringify({
         email: values.email,
         password: values.password, 

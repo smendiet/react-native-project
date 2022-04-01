@@ -1,7 +1,8 @@
 import { View, Text, TouchableOpacity, StyleSheet, Alert, SafeAreaView, TextInput, Image } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
-import Spinner from 'react-native-loading-spinner-overlay';
+//import Spinner from 'react-native-loading-spinner-overlay';
+import * as Progress from 'react-native-progress';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFormik } from 'formik';
 import { string, object }from 'yup';
@@ -106,6 +107,15 @@ export default function LoginScreen() {
           />
         </View>
         <View style={styles.contentItem}>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+          </View>
           <TouchableOpacity
             onPress={formik.handleSubmit}
             style={styles.button}
@@ -119,7 +129,12 @@ export default function LoginScreen() {
         </View>
       </View>
       <View style={styles.footer}>
-          <Text style={{fontWeight: "bold", fontSize: 20,}}>React Native</Text>
+        <Progress.CircleSnail
+          animating={loading}
+          color={['blue']}
+          hidesWhenStopped={true}
+        />
+        <Text style={{fontWeight: "bold", fontSize: 20,}}>React Native</Text>
       </View>
     </SafeAreaView>
   );

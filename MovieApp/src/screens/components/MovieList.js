@@ -3,8 +3,15 @@ import React from 'react'
 import MovieItem from './MovieItem';
 
 export default function MovieList({navigation, movies}) {
-  const handleClick = () => {
-    navigation.navigate('MovieDetail');
+  const handleClick = (movie) => {
+    console.log(movie);
+
+    navigation.navigate({
+      name: 'MovieDetail',
+      params: {
+        movieId: movie.id,    
+      }
+    });
   }
 
   return (
@@ -14,7 +21,7 @@ export default function MovieList({navigation, movies}) {
           return <MovieItem
             key={movie.id}
             movie={movie}
-            handleClick={handleClick}
+            handleClick={() => handleClick(movie)}
           />
         })
       }

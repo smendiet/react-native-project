@@ -16,13 +16,13 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/:id',
+router.get('/:email',
   validatorHandler(getUserSchema, 'params'),
   async (req, res, next) => {
     try {
-      const { id } = req.params;
-      const category = await service.findOne(id);
-      res.json(category);
+      const { email } = req.params;
+      const user = await service.findOne(email);
+      res.json(user);
     } catch (error) {
       next(error);
     }

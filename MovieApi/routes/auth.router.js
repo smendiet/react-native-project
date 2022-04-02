@@ -2,13 +2,13 @@ const express = require('express');
 
 const AuthService = require('../services/auth.service');
 const validatorHandler = require('../middlewares/validator.handler');
-const { validUserSchema } = require('../schemas/user.schema');
+const { authUserSchema } = require('../schemas/user.schema');
 
 const router = express.Router();
 const service = new AuthService();
 
 router.post('/login',
-  validatorHandler(validUserSchema, 'body'),
+  validatorHandler(authUserSchema, 'body'),
   async (req, res, next) => {
     try {
       const { email, password } = req.body;

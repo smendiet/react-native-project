@@ -13,8 +13,26 @@ class UserService {
     return await Users.find(); 
   }
 
+  async findOneSecure(email) {
+    const user = await Users.findOne(email);
+
+    return {
+      email: user.email,
+      fullName: user.fullName,
+      country: user.country,
+      createdDate: user.createdDate,
+      password: user.password,
+    }; 
+  };
+
   async findOne(email) {
-    return await User.findOne({ email: email });
+    const user = await Users.findOne({ email: email });
+    return {
+      email: user.email,
+      fullName: user.fullName,
+      country: user.country,
+      createdDate: user.createdDate,
+    };
   }
 
   async update(id, changes) {

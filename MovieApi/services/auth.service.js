@@ -7,9 +7,7 @@ class AuthService {
   constructor () {}
 
   async login(email, password) {
-    const user = await Users.findOne({
-      email: email
-    });
+    const user = await Users.findOne({ email: email });
 
     if (!user)
       throw new Error('User not found');

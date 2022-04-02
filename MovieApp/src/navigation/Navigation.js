@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/container/HomeScreen';
 import MoviesStackNavigation from './MoviesStackNavigation';
 import ProfileScreen from '../screens/container/ProfileScreen';
+import ProfileDrawerNavigation from './ProfileDrawerNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,11 +47,10 @@ export default function Navigation() {
         }}
       />
       <Tab.Screen
-        name='Profile'
-        component={ProfileScreen}
+        name='ProfileNavigation'
+        component={ProfileDrawerNavigation}
         options={{
-          title: 'Perfil',
-          labelShown: false,
+          headerShown: false,
           tabBarLabel: 'Perfil',
           tabBarIcon: (color, size) => (
             <Icon name="user" size={23} color={color} />

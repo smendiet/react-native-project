@@ -1,17 +1,29 @@
-import { View, Text, Image } from 'react-native';
+import { 
+  Image,
+  TouchableOpacity,
+ } from 'react-native';
 import React from 'react';
-import { Button, Card, Title, Paragraph, CardMedia } from 'react-native-paper';
+import {
+  Button,
+  Card,
+} from 'react-native-paper';
 
-export default function MovieItem({navigation, screenName, handleClick, movie}) {
+export default function MovieItem({handleClick, movie}) {
   return (
-    <Card style={{flex: 1, justifyContent: 'center', alignItems: 'center',}}>
-      <Card.Title title={movie.title} />
-      <Card.Content>
-        <Image source={movie.portada} />
-      </Card.Content>
+    <Card
+      style={{flex: 1, justifyContent: 'center', alignItems: 'center',}}
+    >
+      <TouchableOpacity onPress={handleClick}>  
+        <Card.Title title={movie.title} />
+        <Card.Content onPress={handleClick} >
+          <Image source={movie.portada} />
+        </Card.Content>
+      </TouchableOpacity>
       <Card.Actions>
-        <Button onPress={handleClick}>Cancel</Button>
-        <Button>Ok</Button>
+        <Button onPress={handleClick}>Ver Detalle</Button>
+        <Button>
+          Añadir a Favorito
+        </Button>
       </Card.Actions>
     </Card>
   );

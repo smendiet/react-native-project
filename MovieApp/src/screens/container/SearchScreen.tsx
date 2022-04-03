@@ -24,11 +24,7 @@ export default function SearchScreen() {
   return (
     <View style={{flex: 1}}>
       <Search handleChange={handleChange} query={searchQuery} />
-      <MovieList movies={movies.filter(movie => movie.title.toLowerCase().includes(searchQuery.toLowerCase()))} navigation={navigation} />
+      <MovieList movies={movies.filter((movie: any) => movie.title.toLowerCase().includes(searchQuery.toLowerCase()))} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-
-});

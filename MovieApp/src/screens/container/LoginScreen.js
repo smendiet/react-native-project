@@ -123,6 +123,7 @@ export default function LoginScreen() {
             style={{
                 backgroundColor:
                 formik.isValid ? '#3D85C6' : '#b1cee8',
+                borderRadius: 20,
             }}>
             <Text style={styles.buttonLabel}>Iniciar Sesión</Text>
           </TouchableOpacity>

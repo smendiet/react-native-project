@@ -7,8 +7,20 @@ import {
   Button,
   Card,
 } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
-export default function MovieItem({handleClick, movie}) {
+export default function MovieItem({movie}) {
+  const navigation = useNavigation();
+
+  const handleClick = () => {
+    navigation.navigate({
+      name: 'MovieDetail',
+      params: {
+        movieId: movie.id,    
+      }
+    });
+  };
+
   return (
     <Card
       style={{flex: 1, justifyContent: 'center', alignItems: 'center',}}
@@ -20,7 +32,6 @@ export default function MovieItem({handleClick, movie}) {
         </Card.Content>
       </TouchableOpacity>
       <Card.Actions>
-        <Button onPress={handleClick}>Ver Detalle</Button>
         <Button>
           Añadir a Favorito
         </Button>

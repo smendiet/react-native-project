@@ -2,16 +2,17 @@ import React from 'react'
 import { View, Text, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import SearchScreen from '../screens/container/SearchScreen';
+import SearchStackNavigation from './SearchStackNavigation';
 import MoviesStackNavigation from './MoviesStackNavigation';
-import ProfileDrawerNavigation from './ProfileDrawerNavigation';
+//import ProfileDrawerNavigation from './ProfileDrawerNavigation';
+import ProfileStackNavigation from './ProfileStackNavigation';
 
 const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
   return (
     <Tab.Navigator
-      initialRouteName='Home'
+      initialRouteName='MoviesNavigation'
       screenOptions={{
         activeTintColor: '#e91e63',
         labelStyle: {
@@ -23,22 +24,25 @@ export default function Navigation() {
       }}
     >
       <Tab.Screen
-        name='Home'
+        name='MoviesNavigation'
         component={MoviesStackNavigation}
         options={{
           headerShown: false,
           tabBarLabel: 'Inicio',
+          tabBarShowLabel: false,
           tabBarIcon: (color, size) => (
             <Icon name={'home'} size={23} color={color} />
           ),
         }}
       />
       <Tab.Screen
-        name='Search'
-        component={SearchScreen}
+        name='SearchNavigation'
+        component={SearchStackNavigation}
         options={{
-          title: 'Busqueda',
+          title: 'Búsqueda',
           labelShown: false,
+          headerShown: false,
+          tabBarShowLabel: false,
           tabBarLabel: 'Busqueda',
           tabBarIcon: (color, size) => (
             <Icon name={'search'} size={23} color={color} />
@@ -47,9 +51,10 @@ export default function Navigation() {
       />
       <Tab.Screen
         name='ProfileNavigation'
-        component={ProfileDrawerNavigation}
+        component={ProfileStackNavigation}
         options={{
           headerShown: false,
+          tabBarShowLabel: false,
           tabBarLabel: 'Perfil',
           tabBarIcon: (color, size) => (
             <Icon name="user" size={23} color={color} />

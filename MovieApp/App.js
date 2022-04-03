@@ -18,11 +18,11 @@ const queryClient = new QueryClient();
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      {/*<PaperProvider>*/}
+      <PaperProvider>
         <NavigationContainer>
           <SwitchNavigator />
         </NavigationContainer>
-      {/*</PaperProvider>*/}
+      </PaperProvider>
     </QueryClientProvider>
   );
 }

@@ -1,28 +1,28 @@
 import { View, Text, DrawerButton } from 'react-native';
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import MoviesScreen from '../screens/container/MoviesScreen';
+import SearchScreen from '../screens/container/SearchScreen';
 import MovieDetailScreen from '../screens/container/MovieDetailScreen';
 
-const MoviesStack = new createStackNavigator();
+const SearchStack = new createStackNavigator();
 
-export default function MoviesStackNavigation() {
+export default function SearchStackNavigation() {
   return (
-    <MoviesStack.Navigator>
-      <MoviesStack.Screen
-        name='Movies'
-        component={MoviesScreen}
+    <SearchStack.Navigator>
+      <SearchStack.Screen
+        name='Search'      
+        component={SearchScreen}
         options={{
-          title: 'Inicio',
+          headerShown: false,
         }}
       />
-      <MoviesStack.Screen
+      <SearchStack.Screen
         name='MovieDetail'
         component={MovieDetailScreen}
         options={{
           title: 'Películas',
         }}
       />
-    </MoviesStack.Navigator>
+    </SearchStack.Navigator>
   );
 }

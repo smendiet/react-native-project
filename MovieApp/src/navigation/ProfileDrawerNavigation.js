@@ -7,8 +7,8 @@ import {
 } from '@react-navigation/drawer';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import ProfileScreen from '../screens/container/ProfileScreen';
 
 
@@ -42,29 +42,32 @@ const ProfileDrawerNavigation = () => {
 
   return (
     <Drawer.Navigator
-      initialRouteName="ProfileScreen"
+      initialRouteName="Profile"
       drawerContent={props => <CustomDrawerContent {...props} />}
     >
 
       <Drawer.Screen
         name="Profile"
         component={ProfileScreen}
-        options={{
-          title: 'Perfil'
-        }}
+        options={({ route }) => ({
+          title: 'Perfil',
+          drawerIcon: (color, size) => (
+            <Icon name={'id-card'} size={23} color={color} />
+          ),
+        })}
       />
 
       <Drawer.Screen
         name="Settings"
         component={ProfileScreen}
-        options={{
+        options={({ route }) => ({
           title: 'Configuración',
           drawerIcon: (color, size) => (
-            <Icon name={'home'} size={23} color={color} />
+            <Icon name={'cog'} size={23} color={color} />
           ),
-        }}
+        })}
       />
-      
+
     </Drawer.Navigator>
   );
 }

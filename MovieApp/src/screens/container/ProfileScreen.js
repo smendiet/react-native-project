@@ -15,6 +15,8 @@ import {
 import ProfileHeader from '../components/ProfileHeader';
 import { userGet } from '../../api/useUsers';
 import { set } from 'react-native-reanimated';
+import { MOVIES } from '../../helpers/movies';
+import MovieList from '../components/MovieList';
 
 const emptyPerson = {
   fullName: '',
@@ -45,13 +47,30 @@ export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <ProfileHeader email={email} />
+        <View style={{flex: .6, }}>
+          <ProfileHeader
+          email={email}
+          style={{
+            backgroundColor: 'red',
+          }} />
+        </View>
         <View style={styles.save}>
-          <Text style={styles.saveItem}>Peliculas</Text>
+          <View
+            style={{
+              marginBottom: 15,
+              alignItems: 'center',
+            }} >
+            <Text style={styles.saveItem}>Mis Favoritos</Text>
+          </View>
+          <View
+            style={{flex: 1,}}
+          >
+            <MovieList movies={MOVIES} />
+          </View>
         </View>
       </View>
     </View>
-  )
+  );
 }
 
 const styles =  StyleSheet.create({
@@ -64,10 +83,11 @@ const styles =  StyleSheet.create({
   },
    save: {
     flex: 3,
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: "column",
   },
   saveItem: {
     fontWeight: "bold",
+    justifyContent: 'center',
+    fontSize: 15,
   },
 });

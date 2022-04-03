@@ -2,26 +2,13 @@ import { ScrollView, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import MovieItem from './MovieItem';
 
-export default function MovieList({navigation, movies}) {
-  const handleClick = (movie) => {
-    console.log(movie);
-
-    navigation.navigate({
-      name: 'MovieDetail',
-      params: {
-        movieId: movie.id,    
-      }
-    });
-  }
-
+export default function MovieList({movies}) {
   return (
     <ScrollView style={styles.container}>
-      {
-        movies.map((movie, index) => {  
+      {movies.map((movie, index) => {  
           return <MovieItem
             key={movie.id}
             movie={movie}
-            handleClick={() => handleClick(movie)}
           />
         })
       }

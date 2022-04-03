@@ -11,29 +11,28 @@ interface Options {
 const Search = ({handleChange, query}: Options) => {
   return (
     <View>
-      {/*<TextInput
-        style={styles.input}
-        placeholder='Ingresa tu busqueda'
-      />*/}
       <Searchbar
         style={styles.input}
-        placeholder='Search'
+        placeholder='Búsqueda'
         onChangeText={handleChange}
         value={query}
+        placeholderTextColor={'white'}
       />
     </View>
-  )
+  );
 }
 
 export default Search;
 
 const styles = StyleSheet.create({
   input: {
-    borderWidth: 2,
-    borderColor: 'gray',
+    borderWidth: 1,
+    //borderColor: 'gray',
     fontSize: 20,
-    marginLeft: 3,
-    marginRight: 3,
-    marginBottom: 3,
+    marginVertical: 10,
+    marginHorizontal: 15,
+    borderRadius: 25,
+    borderColor: '#3D85C6',
+    height: 45,
   },
 })

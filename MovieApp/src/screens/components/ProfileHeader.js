@@ -19,23 +19,12 @@ export default function ProfileHeader({email}) {
         <Image
           width='35'
           height='40'
-          style={{flex: 1, width: "70%", height: '70%', resizeMode: "center"}}
+          style={{flex: 1, width: "70%", height: '70%', resizeMode: "contain"}}
           source={ProfileLogo} />
       </View>
       <View style={styles.contentProfile}>
         <View style={styles.contentProfileItem}>
           <Text style={{fontSize: 20, fontWeight: "bold",}}>{person?.fullName}</Text>
-        </View>
-        <View style={styles.contentProfileItem}>
-          <Text style={{fontSize: 16,}}>Software Developer</Text>
-        </View>
-        <View style={[styles.contentProfileItem]}>
-          <View style={styles.contentProfileDetailItem}>
-            <Text style={{fontSize: 10,}}>{person?.country}</Text>
-          </View>
-          <View style={styles.contentProfileDetailItem}>
-            <Text style={{fontSize: 10,}}>Joined on {person?.createdDate}</Text>
-          </View>
         </View>
       </View>
     </View>
@@ -43,35 +32,20 @@ export default function ProfileHeader({email}) {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flex: 1,
-    backgroundColor: "#00bfff",
-  },
   person: {
-    flex: 1,
-    flexDirection: "row",
-  },
-  contentContainer: {
     flex: 1,
     flexDirection: "row",
   },
   contentImage: {
    flex: 3, 
-   alignItems: "center",
+   alignItems: "flex-end",
    justifyContent: "flex-start",
   },
   contentProfile: {
     flex: 5,
-    justifyContent: "space-around",
+    justifyContent: "center",
   },
   contentProfileItem: {
-    height: 25,
+    height: 30,
   },
-  contentProfileDetail: {
-    flexDirection: "row",
-  },
-  contentProfileDetailItem: {
-    flex: 1,
-    fontSize: 8,
-  } 
 });

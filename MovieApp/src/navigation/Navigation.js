@@ -2,9 +2,8 @@ import React from 'react'
 import { View, Text, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/container/HomeScreen';
+import SearchScreen from '../screens/container/SearchScreen';
 import MoviesStackNavigation from './MoviesStackNavigation';
-import ProfileScreen from '../screens/container/ProfileScreen';
 import ProfileDrawerNavigation from './ProfileDrawerNavigation';
 
 const Tab = createBottomTabNavigator();
@@ -36,7 +35,7 @@ export default function Navigation() {
       />
       <Tab.Screen
         name='Search'
-        component={HomeScreen}
+        component={SearchScreen}
         options={{
           title: 'Busqueda',
           labelShown: false,

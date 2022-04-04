@@ -2,6 +2,8 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+import { config } from '../config/app';
+
 
 const movieList = async (genre) => {
   let content = {};
@@ -12,7 +14,7 @@ const movieList = async (genre) => {
   }
 
   const { data } = await axios.post(
-    `http://192.168.0.4:5000/api/v1/movies/genres`, 
+    `${config.baseUrl}/movies/genres`, 
     content,
   );
 
@@ -21,7 +23,7 @@ const movieList = async (genre) => {
 
 const movieProfile = async (email) => {
   const { data } = await axios.post(
-    `http://192.168.0.4:5000/api/v1/movies/favorites`, {
+    `${config.baseUrl}/movies/favorites`, {
     "user": email,
   });
   return data;
@@ -29,7 +31,7 @@ const movieProfile = async (email) => {
 
 export const movieUpdate = async ({movieId, email}) => {
   const { data } = await axios.post(
-    `http://192.168.0.4:5000/api/v1/movies/update`, {
+    `${config.baseUrl}/movies/update`, {
       "id": movieId,
       "user": email,
   });
@@ -39,7 +41,7 @@ export const movieUpdate = async ({movieId, email}) => {
 
 export const movieDelete = async ({movieId, email}) => {
   const { data } = await axios.post(
-    `http://192.168.0.4:5000/api/v1/movies/delete`, {
+    `${config.baseUrl}/movies/delete`, {
       "id": movieId,
       "user": email,
   });
@@ -58,7 +60,7 @@ export const movieSearch = async (title) => {
   }
 
   const { data } = await axios.post(
-    `http://192.168.0.4:5000/api/v1/movies/title`,
+    `${config.baseUrl}/movies/title`,
     content,
   );
 

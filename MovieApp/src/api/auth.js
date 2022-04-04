@@ -1,6 +1,9 @@
 import axios from 'axios';
 
+import { config } from '../config/app'
+
+
 export const authPosts = async (data) => {
-  return await axios.post('http://localhost:3000/api/v1/auth/login', data);
+  return await axios.post(`${config.baseUrl}/auth/login`, data);
 };
 

@@ -5,18 +5,11 @@ const rank = Joi.number();
 const id = Joi.string();
 const user = Joi.string();
 const users = Joi.array();
-const gemres = Joi.array();
-const gemre = Joi.string();
+const genres = Joi.array();
+const genre = Joi.string();
 
 const createMovieSchema = Joi.object({
   title: title.required(),
-  rank: rank,
-  users: users,
-});
-
-const updateMovieSchema = Joi.object({
-  id: id.required(),
-  title: title,
   rank: rank,
   users: users,
 });
@@ -30,7 +23,7 @@ const getMovieFavoritesSchema = Joi.object({
 });
 
 const getMovieByGemresSchema = Joi.object({
-  gemre: gemre.required(),
+  genre: genre,
 });
 
 const validMovieSchema = Joi.object({
@@ -39,8 +32,14 @@ const validMovieSchema = Joi.object({
   users: users,
 });
 
+const updateMovieSchema = Joi.object({
+  id: id.required(),
+  user: user.required(),
+});
+
 module.exports = {
   getMovieByTitleSchema,
   getMovieFavoritesSchema,
   getMovieByGemresSchema,
+  updateMovieSchema,
 };

@@ -3,10 +3,19 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 
-const movieList = async () => {
-  const { data } = await axios.get(
-    `http://192.168.0.4:5000/api/v1/movies/`,
+const movieList = async (genre) => {
+  let content = {};
+  if (genre && genre !== '') {
+    content = {
+      "genre": genre,
+    }
+  }
+
+  const { data } = await axios.post(
+    `http://192.168.0.4:5000/api/v1/movies/genres`, 
+    content,
   );
+
   return data;
 }
 
@@ -17,6 +26,25 @@ const movieProfile = async (email) => {
   });
   return data;
 }
+
+export const movieUpdate = async ({movieId, email}) => {
+  const { data } = await axios.post(
+    `http://192.168.0.4:5000/api/v1/movies/update`, {
+      "id": movieId,
+      "user": email,
+  });
+
+  return data;
+};
+
+export const movieDelete = async ({movieId, email}) => {
+  const { data } = await axios.post(
+    `http://192.168.0.4:5000/api/v1/movies/delete`, {
+      "id": movieId,
+      "user": email,
+  });
+  return data;
+};
 
 export const movieSearch = async (title) => {
   let content = null;
@@ -37,20 +65,20 @@ export const movieSearch = async (title) => {
   return data;
 };
 
-export function useMoviesList() {
+export function useMoviesList(genre) {
   const [isLoading, setIsLoading] = useState(true);
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     (async () => {
       setIsLoading(true);
       
-      const data = await movieList();
+      const data = await movieList(genre);
       setMovies(data);
       
       setIsLoading(false);
     })();
-  }, []);
+  }, [genre]);
 
   return { isLoading, movies };
 }

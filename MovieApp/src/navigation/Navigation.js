@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SearchStackNavigation from './SearchStackNavigation';
 import MoviesStackNavigation from './MoviesStackNavigation';
-//import ProfileDrawerNavigation from './ProfileDrawerNavigation';
 import ProfileStackNavigation from './ProfileStackNavigation';
 
 const Tab = createBottomTabNavigator();
@@ -12,7 +11,7 @@ const Tab = createBottomTabNavigator();
 export default function Navigation() {
   return (
     <Tab.Navigator
-      initialRouteName='MoviesNavigation'
+      initialRouteName='MoviesStackNavigation'
       screenOptions={{
         activeTintColor: '#e91e63',
         labelStyle: {
@@ -24,7 +23,7 @@ export default function Navigation() {
       }}
     >
       <Tab.Screen
-        name='MoviesNavigation'
+        name='MoviesStackNavigation'
         component={MoviesStackNavigation}
         options={{
           headerShown: false,
@@ -35,6 +34,7 @@ export default function Navigation() {
           ),
         }}
       />
+
       <Tab.Screen
         name='SearchNavigation'
         component={SearchStackNavigation}

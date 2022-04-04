@@ -50,7 +50,7 @@ const ProfileDrawerNavigation = () => {
       <Drawer.Screen
         name="Profile"
         component={ProfileScreen}
-        options={{//({ route }) => ({
+        options={{
           title: 'Perfil',
           drawerIcon: (color, size) => (
             <Icon name={'id-card'} size={23} color={color} />
@@ -61,7 +61,7 @@ const ProfileDrawerNavigation = () => {
       <Drawer.Screen
         name="Settings"
         component={SettingsScreen}
-        options={{// route }) => ({
+        options={{
           title: 'Configuración',
           drawerIcon: (color, size) => (
             <Icon name={'cog'} size={23} color={color} />

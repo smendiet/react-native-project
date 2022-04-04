@@ -7,9 +7,10 @@ import { MOVIES } from '../../helpers/movies';
 import MovieList from '../components/MovieList';
 import { useMoviesList } from '../../api/useMovies';
 
-export default function MovieScreen() {
+export default function MovieScreen({route}) {
   const navigation = useNavigation();
-  const { isLoading, movies } = useMoviesList();
+  const genre = route.params?.genre ?? '';
+  const { isLoading, movies } = useMoviesList(genre);
 
   if (isLoading) {
     return <Text>Loading</Text>;

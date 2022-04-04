@@ -49,7 +49,6 @@ export default function LoginScreen() {
     onSubmit: values => {
       setLoading(true);
 
-
       storeData('auth', JSON.stringify({
         email: values.email,
         password: values.password, 

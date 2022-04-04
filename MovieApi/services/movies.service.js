@@ -33,10 +33,32 @@ class MovieService {
     });
   };
 
-  async findByGemres(gemre) {
-    return await Movies.find({
-      gemres: {$in: [gemre]}
-    });
+  async findByGemres(genre) {
+    let movies = [];
+    if (genre && genre !== '') {
+    console.log('findBygenres', genre);
+      movies = await Movies.find({
+        genres: {$in: [genre] }
+      });
+    } else {
+    console.log('findBygenres else', genre);
+      movies = await Movies.find();
+    }
+    
+    return movies; 
+  }
+
+  async addEmailToMovie(id, user) {
+    return await Movies.updateOne(
+      {id: id},
+      {$push: { users: user }});
+  }
+
+  async removeEmailToMovie(id, user) {
+    return await Movies.updateOne(
+      {id: id},
+      {$pull : { users: user }}
+    );
   }
 
 }

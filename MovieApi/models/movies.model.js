@@ -8,7 +8,7 @@ const schema = new Schema({
   id: { type: String },
   createdDate: { type: Date, default: Date.now },
   users: { type: Array },
-  gemres: { type: Array },
+  genres: { type: Array },
 });
 
 

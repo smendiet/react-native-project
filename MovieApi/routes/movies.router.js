@@ -6,6 +6,7 @@ const {
   getMovieByTitleSchema,
   getMovieByGemresSchema,
   getMovieFavoritesSchema,
+  updateMovieSchema,
 } = require('./../schemas/movies.schema');
 
 
@@ -49,14 +50,42 @@ router.post('/favorites',
   }
 );
 
-router.post('/gemres',
+router.post('/genres',
   validatorHandler(getMovieByGemresSchema, 'body'),
   async (req, res, next) => {
     try {
-      const { gemre } = req.body;
-      const movies = await service.findByGemres(gemre);
+      const { genre } = req.body;
+      const movies = await service.findByGemres(genre);
 
       res.status(200).json(movies);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.post('/update',
+  validatorHandler(updateMovieSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const {id, user} = req.body;
+      const movie = await service.addEmailToMovie(id, user);
+
+      res.status(200).json(movie);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.post('/delete',
+  validatorHandler(updateMovieSchema, 'body'),
+  async (req, res, next) => {
+    try {
+      const {id, user} = req.body;
+      await service.removeEmailToMovie(id, user);
+
+      res.status(200);
     } catch (error) {
       next(error);
     }

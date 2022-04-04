@@ -13,6 +13,9 @@ import {
   ToggleButton,
 } from  'react-native-paper';
 import { useState } from 'react';
+import { parseMutationFilterArgs } from 'react-query/types/core/utils';
+import { useMutation, useQueryClient } from 'react-query';
+import { movieUpdate, movieDelete } from '../../api/useMovies';
 
 export default function MovieItem({movie}) {
   const [status, setStatus] = useState('unchecked')
@@ -27,9 +30,36 @@ export default function MovieItem({movie}) {
     });
   };
 
+  const queryClient = useQueryClient();
+  
+  const mutation = useMutation(movieUpdate, {
+    onSuccess: () => {
+      console.log('actualizado');
+    },
+    onError: () => {
+      console.log('error');
+    },
+  });
+  /*
+  const mutationDelete = useMutation(movieDelete, {
+    onSuccess: () => {
+      console.log('delete');
+    },
+    onError: () => {
+
+    },
+  });
+
   const onButtonToggle = value => {
-    setStatus(status === 'checked' ? 'unchecked' : 'checked');
+    if (status === 'checked') {
+      mutationDelete.mutate({ movieId: movie.id, email: 'smendiet@gmail.com' }); 
+      setStatus('unchecked');
+    } else {
+      mutation.mutate({ movieId: movie.id, email: 'smendiet@gmail.com' }); 
+      setStatus('checked');
+    }
   };
+  */
 
   return (
     <Card
@@ -48,12 +78,12 @@ export default function MovieItem({movie}) {
         </Card.Content>
       </TouchableOpacity>
       <Card.Actions>
-        <ToggleButton
+        {/*<ToggleButton
           icon={'heart'}
           status={status}
           onPress={onButtonToggle}
           color={status === 'checked' ? 'red' : 'gray' }
-        /> 
+        />*/}
       </Card.Actions>
     </Card>
   );

@@ -1,18 +1,26 @@
 import { ScrollView, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React, {Fragment} from 'react'
 import MovieItem from './MovieItem';
+import { movieSearch } from '../../api/useMovies';
+import { useQuery } from 'react-query';
 
 export default function MovieList({movies}) {
+
   return (
-    <ScrollView style={styles.container}>
-      {movies.map((movie, index) => {  
-          return <MovieItem
-            key={movie.id}
-            movie={movie}
-          />
-        })
-      }
-    </ScrollView>
+    <Fragment>
+    {movies ?
+      <ScrollView style={styles.container}>
+        {movies.map((movie, index) => {  
+            return <MovieItem
+              key={movie.id}
+              movie={movie}
+            />
+          })
+        }
+      </ScrollView>
+      :<Fragment></Fragment>
+    }
+    </Fragment>
   )
 }
 

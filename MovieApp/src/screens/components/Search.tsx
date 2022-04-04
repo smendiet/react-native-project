@@ -10,7 +10,12 @@ interface Options {
 
 const Search = ({handleChange, query}: Options) => {
   return (
-    <View>
+    <View style={{
+      width: '100%',
+      height: 58,
+      justifyContent: 'center',
+      backgroundColor: '#3D85C6',
+    }}>
       <Searchbar
         style={styles.input}
         placeholder='Búsqueda'
@@ -29,7 +34,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     //borderColor: 'gray',
     fontSize: 20,
-    marginVertical: 10,
+    //marginVertical: 10,
     marginHorizontal: 15,
     borderRadius: 25,
     borderColor: '#3D85C6',

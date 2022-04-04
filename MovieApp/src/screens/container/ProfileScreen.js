@@ -3,46 +3,31 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { useNavigation, NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import { useNavigation, } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-} from 'react-query';
 
 import ProfileHeader from '../components/ProfileHeader';
-import { userGet } from '../../api/useUsers';
-import { set } from 'react-native-reanimated';
-import { MOVIES } from '../../helpers/movies';
-import MovieList from '../components/MovieList';
+import ProfileMovies from '../components/ProfileMovies';
+import { useEmail } from '../../hooks/useEmail';
 
-const emptyPerson = {
-  fullName: '',
-  country: '',
-  createdDate: '',
-  email: '',
-};
 
 export default function ProfileScreen() {
   const navigation = useNavigation();
-  const [email, setEmail] = useState();
+  const {isLoading, email} = useEmail();
 
   const logout = async () => {
     await AsyncStorage.removeItem('auth');
     navigation.navigate('LoginScreen');
   };
 
-  useEffect(() => {
-    (async () => {
-      const auth = JSON.parse(await AsyncStorage.getItem('auth'));
-      if (auth) {
-        setEmail(auth.email);
-      }
-    })();
-  }, []);
-  
+  if (isLoading) {
+    return <Text>Loading</Text>;
+  }
+
+  if (!email) {
+    return <Text>not loading or error</Text>
+  }
 
   return (
     <View style={styles.container}>
@@ -65,7 +50,7 @@ export default function ProfileScreen() {
           <View
             style={{flex: 1,}}
           >
-            <MovieList movies={MOVIES} />
+            <ProfileMovies email={email} />
           </View>
         </View>
       </View>

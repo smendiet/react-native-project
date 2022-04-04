@@ -5,5 +5,7 @@ El proyecto final se trata de una aplicacion para dispositivos moviles (android,
 En el repositorio se encuentra:
 - [Movie API](./MovieApi/README.md) - API que expone CRUD sobre los videos de entrenimiento. Este tiene una conexión a [MongoDB Atlas](https://www.mongodb.com/atlas/) para persistir los datos.
 - [Movie App](./MovieApp/README.md) - App desarrollada usando React Native.
+
+Los siguientes son las evidencias de trabajo en clase:
 - [Sesiones](https://github.com/smendiet/react-native-sessions) - Evidencia de trabajo durante las sesiones
 - [Postwork](https://github.com/smendiet/react-native-postwork) - Evidencia de tareas completadas asignadas durante las sesiones.

@@ -21,7 +21,6 @@ const Search = ({handleChange, query}: Options) => {
         placeholder='Búsqueda'
         onChangeText={handleChange}
         value={query}
-        placeholderTextColor={'white'}
       />
     </View>
   );

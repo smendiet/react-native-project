@@ -45,6 +45,7 @@ const ProfileDrawerNavigation = () => {
     <Drawer.Navigator
       initialRouteName="Profile"
       drawerContent={props => <CustomDrawerContent {...props} />}
+      useLegacyImplementation={true}
     >
 
       <Drawer.Screen

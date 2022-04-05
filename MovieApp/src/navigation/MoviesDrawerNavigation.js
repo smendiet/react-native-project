@@ -10,6 +10,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import MovieScreen from '../screens/container/MoviesScreen';
+import MovieScreen2 from '../screens/container/MoviesScreen';
+import MovieScreen3 from '../screens/container/MoviesScreen';
+import MovieScreen4 from '../screens/container/MoviesScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -17,27 +20,24 @@ const MoviesDrawerNavigation = ({route}) => {
   const navigation = useNavigation();
 
   return (
-    <Drawer.Navigator initialRouteName="Movies">
+    <Drawer.Navigator
+      initialRouteName="Movies"
+      useLegacyImplementation={true}
+    >
 
       <Drawer.Screen
         name="Movies"
         component={MovieScreen}
         options={{
           title: 'Inicio',
-          drawerIcon: (color, size) => (
-            <Icon name={'id-card'} size={23} color={color} />
-          ),
         }}
       />
 
       <Drawer.Screen
         name="Drama"
-        component={MovieScreen}
+        component={MovieScreen2}
         options={{
           title: 'Drama',
-          drawerIcon: (color, size) => (
-            <Icon name={'id-card'} size={23} color={color} />
-          ),
         }}
         initialParams={{
           genre: 'Drama',
@@ -46,12 +46,9 @@ const MoviesDrawerNavigation = ({route}) => {
 
       <Drawer.Screen
         name="Action"
-        component={MovieScreen}
+        component={MovieScreen3}
         options={{
           title: 'Acción',
-          drawerIcon: (color, size) => (
-            <Icon name={'id-card'} size={23} color={color} />
-          ),
         }}
         initialParams={{
           genre: 'Acción',
@@ -60,12 +57,9 @@ const MoviesDrawerNavigation = ({route}) => {
 
       <Drawer.Screen
         name="Adventure"
-        component={MovieScreen}
+        component={MovieScreen4}
         options={{
           title: 'Aventura',
-          drawerIcon: (color, size) => (
-            <Icon name={'id-card'} size={23} color={color} />
-          ),
         }}
         initialParams={{
           genre: 'Aventura',

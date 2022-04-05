@@ -1,10 +1,13 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
+import { config } from '../config/app';
+
+
 export const userGet = async ({email}) => {
   console.log('userGet', email);
   const { data } = await axios.get(
-    `http://192.168.0.4:5000/api/v1/users/${email}`
+    `${config.baseUrl}/users/${email}`
   );
 
   return data;
